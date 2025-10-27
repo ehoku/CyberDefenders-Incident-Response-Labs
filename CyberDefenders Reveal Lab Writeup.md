@@ -18,7 +18,7 @@ This repository documents my approach to solving the **CyberDefenders Reveal Lab
 
 ## Methodology
 
-### Q2: Malicious Process Name
+### Q1: Malicious Process Name
 - **Objective**: Identify the process executing malicious activity.
 - **Technique**: Filtered process hierarchy with `windows.pstree` and checked for injected code using `windows.malfind`.
   ```bash
@@ -28,7 +28,7 @@ This repository documents my approach to solving the **CyberDefenders Reveal Lab
 Identified process with unusual parent or RWX regions in memory.
 Skills: Memory forensics (CySA+, GCIH), process analysis (GSEC).
 
-Q3: Parent PID of Malicious Process
+2.Q2: Parent PID of Malicious Process
 
 Objective: Determine the parent PID of the malicious process.
 Technique: Used windows.pslist to list processes and their PIDs.
@@ -39,7 +39,7 @@ Located PID [REDACTED] and noted its parent PID.
 
 Skills: Process enumeration (Security+, GFACT).
 
-Q4: Second-Stage Payload File Name
+3.Q3: Second-Stage Payload File Name
 
 Objective: Identify the file name of the second-stage payload (format [REDACTED].dll, not smss.exe).
 Technique: Extracted command-line arguments with windows.cmdline and verified files with windows.filescan.
@@ -55,7 +55,7 @@ wiresharktcp.port == 80 || tcp.port == 443 && http.request.method == GET && http
 tcp.port == 445 && smb.file contains ".dll"
 
 
-Q5: Shared Directory on Remote Server
+4.Q4: Shared Directory on Remote Server
 
 Objective: Identify the remote SMB share name.
 Technique: Enumerated network connections with windows.netscan.
@@ -69,7 +69,7 @@ Wireshark Correlation: Filtered for SMB traffic:
 wiresharktcp.port == 445 && smb2
 
 
-Q6: MITRE ATT&CK Sub-Technique ID
+5.Q5: MITRE ATT&CK Sub-Technique ID
 
 Objective: Identify the sub-technique for DLL execution via a Windows utility (format T1218.011, not T1059.001).
 Technique: Analyzed command-line arguments with windows.cmdline and checked for injected code with windows.malfind.
@@ -84,7 +84,7 @@ Wireshark Correlation: Filtered for payload downloads:
 wiresharktcp.port == 80 || tcp.port == 443 && http
 
 
-Q7: Username of Malicious Process
+6.Q6: Username of Malicious Process
 
 Objective: Identify the user account running the malicious process.
 Technique: Mapped PIDs to SIDs with windows.getsids.
@@ -98,7 +98,7 @@ Wireshark Correlation: Filtered for authentication:
 wiresharksmb || kerberos
 
 
-Q8: Malware Family
+7.Q7: Malware Family
 
 Objective: Identify the malware family.
 Technique: Analyzed injected code with windows.malfind and extracted artifacts with windows.procdump.
