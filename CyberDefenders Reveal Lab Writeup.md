@@ -1,4 +1,4 @@
-markdown# CyberDefenders Reveal Lab Writeup
+# CyberDefenders Reveal Lab Writeup
 
 ## Overview
 This repository documents my approach to solving the **CyberDefenders Reveal Lab**, a blue team challenge focused on analyzing a Windows memory dump (`192-Reveal.dmp`) to reconstruct a multi-stage malware attack. The lab covers operating system identification, malicious process analysis, command-line extraction, and network activity correlation, aligning with my certifications: CompTIA Security+, CySA+, CASP+, and GIAC GFACT, GSEC, GCIH. Answers are redacted (e.g., `[REDACTED]`) to respect the challenge’s integrity for GitHub sharing.
